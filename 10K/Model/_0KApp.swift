@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct _0KApp: App {
+    @StateObject var goalVm = GoalViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
+                .environmentObject(goalVm)
         }
     }
 }
