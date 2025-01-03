@@ -15,3 +15,24 @@ extension View {
         )
     }
 }
+
+extension View {
+    func sheetStyle() -> some View {
+        self.presentationDetents([.medium])
+            .presentationDragIndicator(.visible)
+            .background(.ultraThinMaterial)
+            .background(Image("1"))
+    }
+}
+
+struct PrimaryButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .frame(height: 55)
+            .frame(maxWidth: .infinity)
+            .foregroundStyle(Color.black)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .strokeBackground(Color.black)
+            .padding(.bottom, 36)
+    }
+}

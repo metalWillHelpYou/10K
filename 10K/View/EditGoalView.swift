@@ -17,38 +17,41 @@ struct EditGoalView: View {
         VStack {
             Spacer()
             
-            VStack {
-                Text("Edit your goal")
-                    .font(.headline)
-                
-                TextField("New title goal", text: $viewModel.goalTextHandler)
-                    .padding()
-                    .background(Color.gray.opacity(0.4))
-                    .foregroundStyle(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .keyboardType(.default)
-                    .onAppear {
-                        viewModel.goalTextHandler = goal.title ?? ""
-                    }
-            }
+            inputSection
             
             Spacer()
             
-            Button(action: {
-                viewModel.edit(goal, with: viewModel.goalTextHandler)
-                dismiss()
-            }, label: {
-                Text("Done")
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(Color.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .strokeBackground(Color.black)
-                    .padding(.bottom, 36)
-            })
-            .disabled(viewModel.goalTextHandler.isEmpty)
+            doneButton
         }
         .padding()
         .frame(maxWidth: .infinity)
+        .onAppear {
+            viewModel.goalTextHandler = goal.title ?? ""
+        }
     }
 }
+
+extension EditGoalView {
+    private var inputSection: some View {
+        VStack(spacing: 16) {
+            Text("Edit your goal")
+                .font(.headline)
+            
+            TextField("New title goal", text: $viewModel.goalTextHandler)
+                .padding()
+                .background(Color.gray.opacity(0.4))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .keyboardType(.default)
+        }
+        .foregroundStyle(.black)
+    }
+    
+    private var doneButton: some View {
+        Button("Done") {
+            viewModel.edit(goal, with: viewModel.goalTextHandler)
+            dismiss()
+        }
+        .buttonStyle(PrimaryButtonStyle())
+    }
+}
+

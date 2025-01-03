@@ -14,20 +14,20 @@ final class StopwatchViewModel: ObservableObject {
     @Published var isStopwatchRunning: Bool = false
     
     private var stopwatchSubscription: AnyCancellable?
-    private var pausedTime: Int = 0 
-    
-    // MARK: - Stopwatch Logic
+    private var pausedTime: Int = 0
     
     func startStopwatch() {
         guard !isStopwatchRunning else { return }
-        if pausedTime == 0 {
+        if pausedTime > 0 {
+            resumeStopwatch()
+        } else {
             elapsedTime = 0
+            startTimer()
         }
-        resumeStopwatch()
     }
-
     
     func pauseStopwatch() {
+        guard isStopwatchRunning else { return }
         stopwatchSubscription?.cancel()
         isStopwatchRunning = false
         pausedTime = elapsedTime
@@ -35,13 +35,7 @@ final class StopwatchViewModel: ObservableObject {
     
     func resumeStopwatch() {
         guard !isStopwatchRunning else { return }
-        
-        stopwatchSubscription = Timer.publish(every: 1.0, on: .main, in: .common)
-            .autoconnect()
-            .sink { [weak self] _ in
-                self?.handleStopwatchTick()
-            }
-        isStopwatchRunning = true
+        startTimer()
     }
     
     func resetStopwatch() {
@@ -51,11 +45,18 @@ final class StopwatchViewModel: ObservableObject {
         isStopwatchRunning = false
     }
     
+    private func startTimer() {
+        stopwatchSubscription = Timer.publish(every: 1.0, on: .main, in: .common)
+            .autoconnect()
+            .sink { [weak self] _ in
+                self?.handleStopwatchTick()
+            }
+        isStopwatchRunning = true
+    }
+    
     private func handleStopwatchTick() {
         elapsedTime += 1
     }
-    
-    // MARK: - Time Formatting
     
     func formattedTime() -> String {
         let hours = elapsedTime / 3600
@@ -63,8 +64,6 @@ final class StopwatchViewModel: ObservableObject {
         let seconds = elapsedTime % 60
         return String(format: "%02d:%02d:%02d", hours, minutes, seconds)
     }
-    
-    // MARK: - Cleanup
     
     deinit {
         stopwatchSubscription?.cancel()

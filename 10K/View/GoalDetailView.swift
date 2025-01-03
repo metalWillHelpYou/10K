@@ -9,11 +9,11 @@ import SwiftUI
 
 struct GoalDetailView: View {
     @EnvironmentObject var viewModel: GoalViewModel
-    @State private var showAddGoal: Bool = false
-    @State private var showEditGoal: Bool = false
-    @State private var showDeleteGoal: Bool = false
-    @State private var showStopwatch: Bool = false
-    @State private var showAddTime: Bool = false
+    @State private var showAddGoal = false
+    @State private var showEditGoal = false
+    @State private var showDeleteGoal = false
+    @State private var showStopwatch = false
+    @State private var showAddTime = false
     
     let goal: GoalEntity?
     
@@ -26,12 +26,14 @@ struct GoalDetailView: View {
                 
                 Text(goal.title ?? "No Title")
                     .font(.title)
+                
                 Text("\(viewModel.formatSeconds(Int(goal.seconds)))")
                     .font(.title2)
                 
                 Spacer()
                 
-                startButton
+                Button("Start", action: { showStopwatch.toggle() })
+                    .buttonStyle(PrimaryButtonStyle())
             } else {
                 alternativeScreen
             }
@@ -39,51 +41,34 @@ struct GoalDetailView: View {
         .frame(maxWidth: .infinity)
         .padding()
         .foregroundStyle(Color.black)
-        .background(.clear)
-        .sheet(isPresented: $showAddGoal, content: {
-            AddGoalView()
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
-                .background(.ultraThinMaterial)
-                .background(Image("1"))
-        })
-        .sheet(isPresented: $showEditGoal, content: {
-            if let goal = goal{
-                EditGoalView(goal: goal)
-                    .presentationDetents([.medium])
-                    .presentationDragIndicator(.visible)
-                    .background(.ultraThinMaterial)
-                    .background(Image("1"))
+        .sheet(isPresented: $showAddGoal) {
+            AddGoalView().sheetStyle()
+        }
+        .sheet(isPresented: $showEditGoal) {
+            if let goal = goal {
+                EditGoalView(goal: goal).sheetStyle()
             }
-        })
-        .fullScreenCover(isPresented: $showStopwatch, content: {
+        }
+        .sheet(isPresented: $showAddTime) {
+            AddTimeView(goal: goal).sheetStyle()
+        }
+        .fullScreenCover(isPresented: $showStopwatch) {
             StopwatchView(goal: goal)
-        })
-        .sheet(isPresented: $showAddTime, content: {
-            AddTimeView(goal: goal)
-                .presentationDetents([.medium])
-                .presentationDragIndicator(.visible)
-                .background(.ultraThinMaterial)
-                .background(Image("1"))
-        })
+        }
         .confirmationDialog("Are you sure?", isPresented: $showDeleteGoal) {
-            Button("Delete") {
+            Button("Delete", role: .destructive) {
                 if let goal = goal {
                     viewModel.delete(goal)
                 }
             }
         }
-        .onAppear {
-            viewModel.fetchGoals()
-        }
-        .onChange(of: showStopwatch) {
-            viewModel.fetchGoals()
-        }
-        .onChange(of: showAddTime) {
-            viewModel.fetchGoals()
-        }
+        .onAppear { viewModel.fetchGoals() }
+        .onChange(of: showStopwatch) { viewModel.fetchGoals() }
+        .onChange(of: showAddTime) { viewModel.fetchGoals() }
     }
 }
+
+// MARK: - Subviews
 
 extension GoalDetailView {
     private var toolbar: some View {
@@ -106,11 +91,9 @@ extension GoalDetailView {
                         icon: { Image(systemName: "trash") }
                     )
                 })
-                
             } label: {
                 Image(systemName: "list.bullet")
-                    .foregroundStyle(Color.black)
-                    .frame(width: 30, height: 30)
+                    .font(.title2)
             }
             
             Spacer()
@@ -119,31 +102,12 @@ extension GoalDetailView {
                 showAddTime.toggle()
             }, label: {
                 Image(systemName: "pencil")
-                    .resizable()
-                    .frame(width: 20, height: 20)
+                    .font(.title2)
             })
-            .disabled(viewModel.savedGoals.count >= 3)
-            
         }
         .foregroundStyle(Color.black)
     }
     
-    private var startButton: some View {
-        Button(action: {
-            showStopwatch.toggle()
-        }, label: {
-            Text("Start")
-                .frame(height: 55)
-                .frame(maxWidth: .infinity)
-                .foregroundStyle(Color.black)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .strokeBackground(Color.black)
-                .padding(.bottom, 36)
-        })
-    }
-}
-
-extension GoalDetailView {
     private var alternativeScreen: some View {
         VStack {
             HStack {

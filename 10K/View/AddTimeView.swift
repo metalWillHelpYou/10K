@@ -15,59 +15,68 @@ struct AddTimeView: View {
     
     var body: some View {
         VStack(spacing: 16) {
+            Spacer()
+            
+            headerSection
+            
+            timePicker
             
             Spacer()
             
+            addButton
+        }
+        .padding()
+        .frame(maxHeight: .infinity)
+        .foregroundStyle(.black)
+    }
+}
+
+extension AddTimeView {
+    private var headerSection: some View {
+        VStack(spacing: 8) {
             Text("Add extra time")
                 .font(.title3)
             Text("Only if you forgot about stopwatch")
                 .font(.caption)
-            
-            
-            HStack(spacing: 20) {
-                Picker("Hours", selection: $hours) {
-                    ForEach(0..<24) { hour in
-                        Text("\(hour) h").tag(hour)
-                            .foregroundStyle(Color.accentColor)
-                    }
-                }
-                .pickerStyle(WheelPickerStyle())
-                
-                Picker("Minutes", selection: $minutes) {
-                    ForEach(0..<60) { minute in
-                        Text("\(minute) m").tag(minute)
-                            .foregroundStyle(Color.accentColor)
-                    }
-                }
-                .pickerStyle(WheelPickerStyle())
-            }
-            
-            Spacer()
-            
-            Button(action: {
-                if let goal = goal {
-                    GoalCoreDataManager.shared.timeSubtraction(
-                        form: goal, 
-                        (hours * 3600) + (minutes * 60)
-                    )
-                    dismiss()
-                }
-            }, label: {
-                Text("Add")
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(Color.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .strokeBackground(Color.black)
-                    .padding(.bottom, 36)
-            })
         }
-        .padding(.horizontal)
-        .frame(maxHeight: .infinity)
-        .foregroundStyle(.black)
-        .accentColor(.black)
+    }
+    
+    private var timePicker: some View {
+        HStack(spacing: 20) {
+            Picker("Hours", selection: $hours) {
+                ForEach(0..<24) { hour in
+                    Text("\(hour) h").tag(hour)
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
+            
+            Picker("Minutes", selection: $minutes) {
+                ForEach(0..<60) { minute in
+                    Text("\(minute) m").tag(minute)
+                        .foregroundStyle(Color.accentColor)
+                }
+            }
+            .pickerStyle(WheelPickerStyle())
+        }
+    }
+    
+    private var addButton: some View {
+        Button(action: {
+            if let goal = goal {
+                GoalCoreDataManager.shared.timeSubtraction(
+                    form: goal,
+                    (hours * 3600) + (minutes * 60)
+                )
+                dismiss()
+            }
+        }, label: {
+            Text("Add")
+        })
+        .buttonStyle(PrimaryButtonStyle())
     }
 }
+
 
 #Preview {
     AddTimeView(goal: nil)

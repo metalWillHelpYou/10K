@@ -15,37 +15,43 @@ struct AddGoalView: View {
         VStack {
             Spacer()
             
-            VStack {
-                Text("Your journey start here")
-                
-                TextField("What is your new goal?", text: $viewModel.goalTextHandler)
-                    .padding()
-                    .background(Color.gray.opacity(0.4))
-                    .foregroundStyle(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .keyboardType(.emailAddress)
-            }
+            inputSection
             
             Spacer()
             
-            Button(action: {
-                viewModel.addGoal(with: viewModel.goalTextHandler)
-                dismiss()
-            }, label: {
-                Text("Start")
-                    .frame(height: 55)
-                    .frame(maxWidth: .infinity)
-                    .foregroundStyle(Color.black)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    .strokeBackground(Color.black)
-                    .padding(.bottom, 36)
-            })
-            
+            startButton
         }
         .padding()
         .frame(maxWidth: .infinity)
     }
 }
+
+extension AddGoalView {
+    private var inputSection: some View {
+        VStack {
+            Text("Your journey starts here")
+                .font(.title3)
+                .padding(.bottom, 8)
+            
+            TextField("What is your new goal?", text: $viewModel.goalTextHandler)
+                .padding()
+                .background(Color.gray.opacity(0.4))
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .keyboardType(.default)
+        }
+        .foregroundStyle(.black)
+    }
+    
+    private var startButton: some View {
+        Button("Let's go") {
+            viewModel.addGoal(with: viewModel.goalTextHandler)
+            dismiss()
+        }
+        .disabled(viewModel.goalTextHandler.isEmpty)
+        .buttonStyle(PrimaryButtonStyle())
+    }
+}
+
 
 #Preview {
     AddGoalView()
