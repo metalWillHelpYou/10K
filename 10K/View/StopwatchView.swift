@@ -27,8 +27,11 @@ struct StopwatchView: View {
             
             HStack {
                 Button {
-                    viewModel.resetStopwatch()
-                    dismiss()
+                    if let goal = goal {
+                        GoalCoreDataManager.shared.timeSubtraction(form: goal, viewModel.elapsedTime)
+                        viewModel.resetStopwatch()
+                        dismiss()
+                    }
                 } label: {
                     Text("Reset")
                         .foregroundStyle(Color.white)
@@ -57,9 +60,6 @@ struct StopwatchView: View {
         .background(Color.black)
         .onAppear {
             viewModel.startStopwatch()
-        }
-        .onDisappear {
-            
         }
     }
 }

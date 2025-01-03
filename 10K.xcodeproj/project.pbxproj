@@ -17,6 +17,7 @@
 		9BBD6FF22D27174D00026421 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6FF02D27174D00026421 /* CoreDataModel.xcdatamodeld */; };
 		9BBD6FF42D27178100026421 /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6FF32D27178100026421 /* StopwatchViewModel.swift */; };
 		9BBD6FF62D27179300026421 /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6FF52D27179300026421 /* StopwatchView.swift */; };
+		9BC525632D28307600958A3C /* AddTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC525622D28307600958A3C /* AddTimeView.swift */; };
 		9BFB13232D25E21B00F2E81B /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB13222D25E21B00F2E81B /* Extentions.swift */; };
 		9BFB13272D25E32800F2E81B /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB13262D25E32800F2E81B /* AddGoalView.swift */; };
 		9BFB13292D25E3E200F2E81B /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB13282D25E3E200F2E81B /* GoalViewModel.swift */; };
@@ -34,6 +35,7 @@
 		9BBD6FF12D27174D00026421 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		9BBD6FF32D27178100026421 /* StopwatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
 		9BBD6FF52D27179300026421 /* StopwatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
+		9BC525622D28307600958A3C /* AddTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTimeView.swift; sourceTree = "<group>"; };
 		9BFB13222D25E21B00F2E81B /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		9BFB13262D25E32800F2E81B /* AddGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
 		9BFB13282D25E3E200F2E81B /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
@@ -112,8 +114,9 @@
 				9B43455F2D26BEFC00ABFA86 /* GoalDetailView.swift */,
 				9BFB13262D25E32800F2E81B /* AddGoalView.swift */,
 				9B4345612D26C79C00ABFA86 /* EditGoalView.swift */,
-				9B9A6B0E2D269CFB00CB60A1 /* RootView.swift */,
+				9BC525622D28307600958A3C /* AddTimeView.swift */,
 				9BBD6FF52D27179300026421 /* StopwatchView.swift */,
+				9B9A6B0E2D269CFB00CB60A1 /* RootView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				9B4345602D26BEFC00ABFA86 /* GoalDetailView.swift in Sources */,
 				9B4345622D26C79C00ABFA86 /* EditGoalView.swift in Sources */,
 				9BBD6FF42D27178100026421 /* StopwatchViewModel.swift in Sources */,
+				9BC525632D28307600958A3C /* AddTimeView.swift in Sources */,
 				9B39C7722D25DCD300C7D707 /* _0KApp.swift in Sources */,
 				9BFB13292D25E3E200F2E81B /* GoalViewModel.swift in Sources */,
 				9BFB13272D25E32800F2E81B /* AddGoalView.swift in Sources */,

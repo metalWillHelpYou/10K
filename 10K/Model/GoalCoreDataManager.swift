@@ -63,4 +63,10 @@ final class GoalCoreDataManager {
         }
         return savedGoals
     }
+    
+    func timeSubtraction(form goal: GoalEntity, _ time: Int) {
+        goal.seconds -= Int32(time)
+        
+        savedGoals = saveData()
+    }
 }

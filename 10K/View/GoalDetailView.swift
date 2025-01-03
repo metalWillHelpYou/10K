@@ -13,6 +13,7 @@ struct GoalDetailView: View {
     @State private var showEditGoal: Bool = false
     @State private var showDeleteGoal: Bool = false
     @State private var showStopwatch: Bool = false
+    @State private var showAddTime: Bool = false
     
     let goal: GoalEntity?
     
@@ -24,8 +25,9 @@ struct GoalDetailView: View {
                 Spacer()
                 
                 Text(goal.title ?? "No Title")
+                    .font(.title)
+                Text("\(viewModel.formatSeconds(Int(goal.seconds)))")
                     .font(.title2)
-                Text("Time: \(goal.seconds) seconds")
                 
                 Spacer()
                 
@@ -36,6 +38,7 @@ struct GoalDetailView: View {
         }
         .frame(maxWidth: .infinity)
         .padding()
+        .foregroundStyle(Color.black)
         .background(.clear)
         .sheet(isPresented: $showAddGoal, content: {
             AddGoalView()
@@ -56,6 +59,13 @@ struct GoalDetailView: View {
         .fullScreenCover(isPresented: $showStopwatch, content: {
             StopwatchView(goal: goal)
         })
+        .sheet(isPresented: $showAddTime, content: {
+            AddTimeView(goal: goal)
+                .presentationDetents([.medium])
+                .presentationDragIndicator(.visible)
+                .background(.ultraThinMaterial)
+                .background(Image("1"))
+        })
         .confirmationDialog("Are you sure?", isPresented: $showDeleteGoal) {
             Button("Delete") {
                 if let goal = goal {
@@ -64,6 +74,12 @@ struct GoalDetailView: View {
             }
         }
         .onAppear {
+            viewModel.fetchGoals()
+        }
+        .onChange(of: showStopwatch) {
+            viewModel.fetchGoals()
+        }
+        .onChange(of: showAddTime) {
             viewModel.fetchGoals()
         }
     }
@@ -100,9 +116,9 @@ extension GoalDetailView {
             Spacer()
             
             Button(action: {
-                
+                showAddTime.toggle()
             }, label: {
-                Image(systemName: "info.circle")
+                Image(systemName: "pencil")
                     .resizable()
                     .frame(width: 20, height: 20)
             })
