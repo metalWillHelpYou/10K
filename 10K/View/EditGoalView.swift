@@ -35,7 +35,7 @@ struct EditGoalView: View {
             Spacer()
             
             Button(action: {
-                viewModel.edit(goal)
+                viewModel.edit(goal, with: viewModel.goalTextHandler)
                 dismiss()
             }, label: {
                 Text("Done")

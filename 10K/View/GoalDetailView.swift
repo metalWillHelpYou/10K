@@ -12,7 +12,7 @@ struct GoalDetailView: View {
     @State private var showAddGoal: Bool = false
     @State private var showEditGoal: Bool = false
     @State private var showDeleteGoal: Bool = false
-    @State private var showInfo: Bool = false
+    @State private var showStopwatch: Bool = false
     
     let goal: GoalEntity?
     
@@ -53,12 +53,18 @@ struct GoalDetailView: View {
                     .background(Image("1"))
             }
         })
+        .fullScreenCover(isPresented: $showStopwatch, content: {
+            StopwatchView(goal: goal)
+        })
         .confirmationDialog("Are you sure?", isPresented: $showDeleteGoal) {
             Button("Delete") {
                 if let goal = goal {
                     viewModel.delete(goal)
                 }
             }
+        }
+        .onAppear {
+            viewModel.fetchGoals()
         }
     }
 }
@@ -94,7 +100,7 @@ extension GoalDetailView {
             Spacer()
             
             Button(action: {
-                showInfo.toggle()
+                
             }, label: {
                 Image(systemName: "info.circle")
                     .resizable()
@@ -108,7 +114,7 @@ extension GoalDetailView {
     
     private var startButton: some View {
         Button(action: {
-            
+            showStopwatch.toggle()
         }, label: {
             Text("Start")
                 .frame(height: 55)

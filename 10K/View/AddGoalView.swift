@@ -29,7 +29,7 @@ struct AddGoalView: View {
             Spacer()
             
             Button(action: {
-                viewModel.addGoal()
+                viewModel.addGoal(with: viewModel.goalTextHandler)
                 dismiss()
             }, label: {
                 Text("Start")

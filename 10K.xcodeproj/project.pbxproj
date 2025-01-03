@@ -7,19 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B0C36612D281B9E00781968 /* GoalCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0C36602D281B9E00781968 /* GoalCoreDataManager.swift */; };
 		9B39C7722D25DCD300C7D707 /* _0KApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B39C7712D25DCD300C7D707 /* _0KApp.swift */; };
 		9B39C7762D25DCD400C7D707 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B39C7752D25DCD400C7D707 /* Assets.xcassets */; };
 		9B39C7792D25DCD400C7D707 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B39C7782D25DCD400C7D707 /* Preview Assets.xcassets */; };
 		9B4345602D26BEFC00ABFA86 /* GoalDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B43455F2D26BEFC00ABFA86 /* GoalDetailView.swift */; };
 		9B4345622D26C79C00ABFA86 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4345612D26C79C00ABFA86 /* EditGoalView.swift */; };
 		9B9A6B0F2D269CFB00CB60A1 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9A6B0E2D269CFB00CB60A1 /* RootView.swift */; };
+		9BBD6FF22D27174D00026421 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6FF02D27174D00026421 /* CoreDataModel.xcdatamodeld */; };
+		9BBD6FF42D27178100026421 /* StopwatchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6FF32D27178100026421 /* StopwatchViewModel.swift */; };
+		9BBD6FF62D27179300026421 /* StopwatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BBD6FF52D27179300026421 /* StopwatchView.swift */; };
 		9BFB13232D25E21B00F2E81B /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB13222D25E21B00F2E81B /* Extentions.swift */; };
 		9BFB13272D25E32800F2E81B /* AddGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB13262D25E32800F2E81B /* AddGoalView.swift */; };
 		9BFB13292D25E3E200F2E81B /* GoalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB13282D25E3E200F2E81B /* GoalViewModel.swift */; };
-		9BFB132C2D25E4F800F2E81B /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BFB132A2D25E4F800F2E81B /* CoreDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9B0C36602D281B9E00781968 /* GoalCoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalCoreDataManager.swift; sourceTree = "<group>"; };
 		9B39C76E2D25DCD300C7D707 /* 10K.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 10K.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B39C7712D25DCD300C7D707 /* _0KApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0KApp.swift; sourceTree = "<group>"; };
 		9B39C7752D25DCD400C7D707 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -27,10 +31,12 @@
 		9B43455F2D26BEFC00ABFA86 /* GoalDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDetailView.swift; sourceTree = "<group>"; };
 		9B4345612D26C79C00ABFA86 /* EditGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		9B9A6B0E2D269CFB00CB60A1 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		9BBD6FF12D27174D00026421 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		9BBD6FF32D27178100026421 /* StopwatchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopwatchViewModel.swift; sourceTree = "<group>"; };
+		9BBD6FF52D27179300026421 /* StopwatchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopwatchView.swift; sourceTree = "<group>"; };
 		9BFB13222D25E21B00F2E81B /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
 		9BFB13262D25E32800F2E81B /* AddGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoalView.swift; sourceTree = "<group>"; };
 		9BFB13282D25E3E200F2E81B /* GoalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewModel.swift; sourceTree = "<group>"; };
-		9BFB132B2D25E4F800F2E81B /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +91,8 @@
 			children = (
 				9B39C7712D25DCD300C7D707 /* _0KApp.swift */,
 				9BFB13222D25E21B00F2E81B /* Extentions.swift */,
-				9BFB132A2D25E4F800F2E81B /* CoreDataModel.xcdatamodeld */,
+				9BBD6FF02D27174D00026421 /* CoreDataModel.xcdatamodeld */,
+				9B0C36602D281B9E00781968 /* GoalCoreDataManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -94,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				9BFB13282D25E3E200F2E81B /* GoalViewModel.swift */,
+				9BBD6FF32D27178100026421 /* StopwatchViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -105,6 +113,7 @@
 				9BFB13262D25E32800F2E81B /* AddGoalView.swift */,
 				9B4345612D26C79C00ABFA86 /* EditGoalView.swift */,
 				9B9A6B0E2D269CFB00CB60A1 /* RootView.swift */,
+				9BBD6FF52D27179300026421 /* StopwatchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,11 +190,14 @@
 			files = (
 				9B4345602D26BEFC00ABFA86 /* GoalDetailView.swift in Sources */,
 				9B4345622D26C79C00ABFA86 /* EditGoalView.swift in Sources */,
+				9BBD6FF42D27178100026421 /* StopwatchViewModel.swift in Sources */,
 				9B39C7722D25DCD300C7D707 /* _0KApp.swift in Sources */,
 				9BFB13292D25E3E200F2E81B /* GoalViewModel.swift in Sources */,
 				9BFB13272D25E32800F2E81B /* AddGoalView.swift in Sources */,
 				9B9A6B0F2D269CFB00CB60A1 /* RootView.swift in Sources */,
-				9BFB132C2D25E4F800F2E81B /* CoreDataModel.xcdatamodeld in Sources */,
+				9BBD6FF22D27174D00026421 /* CoreDataModel.xcdatamodeld in Sources */,
+				9BBD6FF62D27179300026421 /* StopwatchView.swift in Sources */,
+				9B0C36612D281B9E00781968 /* GoalCoreDataManager.swift in Sources */,
 				9BFB13232D25E21B00F2E81B /* Extentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,14 +406,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9BFB132A2D25E4F800F2E81B /* CoreDataModel.xcdatamodeld */ = {
+		9BBD6FF02D27174D00026421 /* CoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9BFB132B2D25E4F800F2E81B /* CoreDataModel.xcdatamodel */,
+				9BBD6FF12D27174D00026421 /* CoreDataModel.xcdatamodel */,
 			);
-			currentVersion = 9BFB132B2D25E4F800F2E81B /* CoreDataModel.xcdatamodel */;
+			currentVersion = 9BBD6FF12D27174D00026421 /* CoreDataModel.xcdatamodel */;
 			name = CoreDataModel.xcdatamodeld;
-			path = "/Users/metalwillhelpyou/Swift/projects/UI/In Progress/10K/10K/Model/CoreDataModel.xcdatamodeld";
+			path = /Users/metalwillhelpyou/.Trash/10K/10K/Model/CoreDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
